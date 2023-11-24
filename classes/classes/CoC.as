@@ -41,6 +41,7 @@ import flash.utils.setTimeout;
 import mx.logging.Log;
 import mx.logging.LogEventLevel;
 import mx.logging.targets.TraceTarget;
+import com.junkbyte.console.Cc;
 
 /****
  classes.CoC: The Document class of Corruption of the Champions.
@@ -216,7 +217,22 @@ public class CoC extends MovieClip
         // let the logging begin!
         Log.addTarget(traceTarget);
     }
+    public function SetupConsoleBits():void {
+        //
+        // SET UP - only required once
+        //
+        Cc.config.style.backgroundAlpha = 1;
 
+        Cc.startOnStage(this, "`"); // "`" - change for password. This will start hidden
+        Cc.visible = true; // Show console, because having password hides console.
+
+        Cc.config.commandLineAllowed = true; // enable advanced (but security risk) features.
+        Cc.config.tracing = true; // Also trace on flash's normal trace
+        Cc.config.remotingPassword = ""; // Just so that remote don't ask for password
+        Cc.remoting = true; // Start sending logs to remote (using LocalConnection)
+
+        Cc.commandLine = true; // Show command line
+    }
     public function CoC()
     {
         _instance = this;
@@ -261,6 +277,7 @@ public class CoC extends MovieClip
             mainView.mainText.htmlText +=
                     "\n----\nError in scene: "+error.message+"\n"+error.getStackTrace()+"\n----\n";
         }
+        SetupConsoleBits();
 
         // Set up all the messy global stuff:
 
