@@ -8,7 +8,7 @@ import coc.view.MainView;
 import flash.display.Stage;
 import flash.events.KeyboardEvent;
 import flash.text.TextField;
-
+import com.junkbyte.console.Cc;
 /**
 	 * Generic input manager
 	 * I feel sick writing some of these control functors; rather than having some form of queryable game state
@@ -264,6 +264,7 @@ import flash.text.TextField;
 		 */
 		private function ExecuteKeyCode(keyCode:int):void
 		{
+			if(Cc.instance.panels.mainPanel.visible) return;
 			if (_keysToControlMethods[keyCode] != null)
 			{
 				if (_debug) trace("Attempting to exec func [" + _controlMethods[_keysToControlMethods[keyCode]].Name + "]");
