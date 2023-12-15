@@ -228,8 +228,6 @@ public class CoC extends MovieClip
 
         Cc.config.commandLineAllowed = true; // enable advanced (but security risk) features.
         Cc.config.tracing = true; // Also trace on flash's normal trace
-        Cc.config.remotingPassword = ""; // Just so that remote don't ask for password
-        Cc.remoting = true; // Start sending logs to remote (using LocalConnection)
 
         Cc.commandLine = true; // Show command line
     }
