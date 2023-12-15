@@ -230,6 +230,7 @@ public class CoC extends MovieClip
         Cc.config.tracing = true; // Also trace on flash's normal trace
 
         Cc.commandLine = true; // Show command line
+        Cc.store("CoCI",CoC.instance);
     }
     public function CoC()
     {
